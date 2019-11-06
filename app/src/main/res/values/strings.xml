@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CloverPrintDemo</string>
+    <string name="print">Print</string>
 </resources>
