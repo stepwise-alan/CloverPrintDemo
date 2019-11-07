@@ -61,7 +61,14 @@ public class MainActivity extends AppCompatActivity implements OnServiceConnecte
                             .build()
                             .print(MainActivity.this,
                                     CloverAccount.getAccount(MainActivity.this));
-                    root.removeView(inflatedView);
+                    MainActivity.this.runOnUiThread(
+                            new Runnable() {
+                                @Override
+                                public void run() {
+                                    root.removeView(inflatedView);
+                                }
+                            }
+                    );
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -74,12 +81,12 @@ public class MainActivity extends AppCompatActivity implements OnServiceConnecte
 
         TextView tvName = new TextView(this);
         tvName.setText(name);
-        tvName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
+        tvName.setTextSize(26);
         row.addView(tvName);
 
         TextView tvValue = new TextView(this);
         tvValue.setText(value);
-        tvValue.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
+        tvValue.setTextSize(26);
         tvValue.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
