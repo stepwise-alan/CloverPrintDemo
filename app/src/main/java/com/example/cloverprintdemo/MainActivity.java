@@ -31,10 +31,8 @@ public class MainActivity extends AppCompatActivity implements OnServiceConnecte
     }
 
     public void onPrint(View view) {
-        final LayoutInflater inflater = LayoutInflater.from(this);
-
         final ViewGroup root = (ViewGroup) getWindow().getDecorView().getRootView();
-        final View inflatedView = inflater.inflate(R.layout.layout_print, root, false);
+        final View inflatedView = LayoutInflater.from(this).inflate(R.layout.layout_print, root, false);
         inflatedView.setVisibility(View.INVISIBLE);
         root.addView(inflatedView);
 
